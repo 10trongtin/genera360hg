@@ -1,4 +1,4 @@
-﻿<krpano version="1.20.11" title="Dự án Genera">
+<krpano version="1.20.11" title="Dự án Genera">
 
 			<!-- Tạo thanh menu -->
 	<include url="menu/plugins/menu_sm.xml" />
@@ -44,31 +44,41 @@
 	               tooltips_mapspots="false"
 	               deeplinking="false"
 	               loadscene_flags="MERGE"
-	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
-	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
-	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+	               loadscene_blend="BLEND(0.35, easeOutCubic)"
+	               loadscene_blend_prev="BLEND(0.35, easeOutCubic)"
+	               loadscene_blend_next="BLEND(0.35, easeOutCubic)"
 	               loadingtext=""
 	               layout_width="100%"
-	               layout_maxwidth="814"
-	               controlbar_width="-24"
-	               controlbar_height="40"
-	               controlbar_offset="5"
+	               layout_maxwidth="720"
+	               controlbar_width="-32"
+	               controlbar_height="48"
+	               controlbar_offset="12"
 	               controlbar_offset_closed="-40"
 	               controlbar_overlap.no-fractionalscaling="10"
 	               controlbar_overlap.fractionalscaling="0"
 	               design_skin_images="vtourskin.png"
-	               design_bgcolor="0x2D3E50"
-	               design_bgalpha="0.8"
-	               design_bgborder="0"
-	               design_bgroundedge="1"
-	               design_bgshadow="0 4 10 0x000000 0.3"
-	               design_thumbborder_bgborder="3 0xFFFFFF 1.0"
-	               design_thumbborder_padding="2"
-	               design_thumbborder_bgroundedge="0"
-	               design_text_css="color:#FFFFFF; font-family:Arial;"
-	               design_text_shadow="1"
+	               design_bgcolor="0x171814"
+	               design_bgalpha="0.88"
+	               design_bgborder="1 0xFFFFFF 0.14"
+	               design_bgroundedge="18"
+	               design_bgshadow="0 10 30 0x000000 0.28"
+	               design_thumbborder_bgborder="2 0xD9BD82 1.0"
+	               design_thumbborder_padding="3"
+	               design_thumbborder_bgroundedge="12"
+	               design_text_css="color:#F0F0E8; font-family:Arial, sans-serif;"
+	               design_text_shadow="0"
 	               />
 
+	<style name="funny_hotspotstyle"
+	       type="text" html="get:tooltip"
+	       css="color:#3A2F18; font-family:Arial, sans-serif; font-size:14px; font-weight:bold; text-align:center;"
+	       padding="10 16" bgcolor="0xD9BD82" bgalpha="0.96"
+	       bgborder="1 0xFFF4D6 0.55" bgroundedge="18" bgshadow="0 6 18 0x000000 0.28"
+	       edge="center" distorted="false" mipmapping="true" capture="true" handcursor="true"
+	       onover="tween(scale,1.04,0.15,easeOutQuad);" onout="tween(scale,1.0,0.15,easeOutQuad);"
+	       ondown="tween(scale,0.97,0.08,easeOutQuad);" onup="tween(scale,1.0,0.12,easeOutQuad);"
+	       onclick="if(linkedscene, loadscene(get(linkedscene), null, MERGE, BLEND(0.35, easeOutCubic)));"
+	       />
 	<!--
 	    For an alternative skin design either change the <skin_settings> values 
 	    from above or optionally include one of the predefined designs from below.

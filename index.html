@@ -1,251 +1,132 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!doctype html>
+<html lang="vi">
 <head>
-		<meta charset="utf-8" />
-		<title>360 độ vị trí dự án Genera by The Solia</title>
-
-		<meta name="description" content="360 độ vị trí dự án Genera by The Solia" />
-
-		<meta name="keywords" content="360 độ vị trí dự án Genera by The Solia" />
-		<meta property="og:image" content="https://ecoparkproperty.vn/wp-content/uploads/2026/07/genera.jpg">		
-		<meta name="generator" content="" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover" />
-	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
-	<meta name="mobile-web-app-capable" content="yes" />
-	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
-	<meta http-equiv="x-ua-compatible" content="IE=edge" />
-	<style>
-		html { height:100%; }
-		body { height:100%; overflow:hidden; margin:0; padding:0; font-family:Arial, Helvetica, sans-serif; font-size:16px; color:#FFFFFF; background-color:#000000; }
-	</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#171814">
+  <meta name="description" content="Khám phá vị trí dự án Genera by The Solia qua sa bàn 360°.">
+  <meta property="og:title" content="Sa bàn 360° | Genera by The Solia">
+  <meta property="og:description" content="Khám phá vị trí và tiện ích dự án Genera by The Solia.">
+  <meta property="og:image" content="https://ecoparkproperty.vn/wp-content/uploads/2026/07/genera.jpg">
+  <title>Sa bàn 360° | Genera by The Solia</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --surface: #171814;
+      --surface-high: #23241f;
+      --surface-glass: rgba(23, 24, 20, 0.88);
+      --primary: #d9bd82;
+      --on-primary: #3a2f18;
+      --on-surface: #f0f0e8;
+      --on-surface-muted: #c7c7bc;
+      --outline: rgba(240, 240, 232, 0.16);
+      --shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+      --radius-lg: 22px;
+      --radius-pill: 999px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html, body, #pano { width: 100%; height: 100%; margin: 0; }
+    body { overflow: hidden; color: var(--on-surface); background: var(--surface); -webkit-tap-highlight-color: transparent; }
+    button, a { font: inherit; }
+    #pano { position: fixed; inset: 0; background: #10110e; }
+    .top-app-bar {
+      position: fixed; z-index: 20; top: max(16px, env(safe-area-inset-top)); left: max(16px, env(safe-area-inset-left));
+      display: flex; align-items: center; gap: 12px; min-height: 64px; max-width: min(460px, calc(100vw - 96px));
+      padding: 10px 18px 10px 10px; border: 1px solid var(--outline); border-radius: var(--radius-lg);
+      background: var(--surface-glass); box-shadow: var(--shadow); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    }
+    .brand-mark {
+      display: grid; flex: 0 0 44px; width: 44px; height: 44px; place-items: center; border-radius: 15px;
+      color: var(--on-primary); background: var(--primary); font-size: 13px; font-weight: 800; letter-spacing: -0.03em;
+    }
+    .brand-copy { min-width: 0; }
+    .brand-kicker { margin: 0 0 2px; color: var(--primary); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+    .brand-title { overflow: hidden; margin: 0; font-size: 16px; font-weight: 650; letter-spacing: -0.01em; line-height: 1.2; text-overflow: ellipsis; white-space: nowrap; }
+    .contact-actions {
+      position: fixed; z-index: 20; right: max(16px, env(safe-area-inset-right)); bottom: max(76px, calc(env(safe-area-inset-bottom) + 76px));
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .action-button {
+      display: flex; width: 56px; height: 56px; align-items: center; justify-content: center; border: 1px solid var(--outline);
+      border-radius: 18px; color: var(--on-surface); background: var(--surface-glass); box-shadow: var(--shadow); text-decoration: none;
+      transition: transform 180ms ease, background-color 180ms ease, color 180ms ease; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    }
+    .action-button.primary { border-color: transparent; color: var(--on-primary); background: var(--primary); }
+    .action-button:hover { transform: translateY(-2px); background: var(--surface-high); }
+    .action-button.primary:hover { background: #e7cc91; }
+    .action-button:active { transform: scale(0.96); }
+    .action-button:focus-visible { outline: 3px solid rgba(217, 189, 130, 0.45); outline-offset: 3px; }
+    .action-button svg { width: 24px; height: 24px; fill: currentColor; }
+    .helper-chip {
+      position: fixed; z-index: 15; left: 50%; bottom: max(76px, calc(env(safe-area-inset-bottom) + 76px)); display: flex;
+      align-items: center; gap: 8px; padding: 10px 16px; border: 1px solid var(--outline); border-radius: var(--radius-pill);
+      color: var(--on-surface-muted); background: var(--surface-glass); box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      font-size: 13px; font-weight: 550; pointer-events: none; transform: translateX(-50%);
+      transition: opacity 400ms ease, transform 400ms ease; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    }
+    .helper-chip.is-hidden { opacity: 0; transform: translate(-50%, 8px); }
+    .helper-chip svg { width: 18px; height: 18px; fill: var(--primary); }
+    .loading-screen {
+      position: fixed; z-index: 100; inset: 0; display: grid; place-items: center; background: var(--surface);
+      transition: opacity 420ms ease, visibility 420ms ease;
+    }
+    .loading-screen.is-ready { opacity: 0; visibility: hidden; }
+    .loader { display: grid; justify-items: center; gap: 18px; color: var(--on-surface-muted); font-size: 13px; letter-spacing: 0.04em; }
+    .loader-ring { width: 42px; height: 42px; border: 3px solid rgba(217, 189, 130, 0.18); border-top-color: var(--primary); border-radius: 50%; animation: spin 850ms linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (max-width: 600px) {
+      .top-app-bar { min-height: 58px; max-width: calc(100vw - 88px); padding: 8px 14px 8px 8px; }
+      .brand-mark { width: 40px; height: 40px; border-radius: 13px; }
+      .brand-title { font-size: 14px; }
+      .brand-kicker { font-size: 10px; }
+      .contact-actions { bottom: max(70px, calc(env(safe-area-inset-bottom) + 70px)); }
+      .action-button { width: 52px; height: 52px; border-radius: 17px; }
+      .helper-chip { bottom: max(72px, calc(env(safe-area-inset-bottom) + 72px)); font-size: 12px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+  </style>
 </head>
 <body>
-
-<script src="tour.js"></script>
-
-<div id="pano" style="width:100%;height:100%;">
-	<noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
-	<script>
-		embedpano({xml:"tour.xml", target:"pano", html5:"only", mobilescale:1.0, passQueryParameters:"startscene,startlookat"});
-	</script>
-</div>
-
-<script src="tour.js"></script>
-
-<div id="pano" style="width:100%;height:100%;">
-	<noscript><table style="width:100%;height:100%;"><tr style="vertical-align:middle;"><td><div style="text-align:center;">ERROR:<br/><br/>Javascript not activated<br/><br/></div></td></tr></table></noscript>
-	<script>
-		embedpano({xml:"tour.xml", target:"pano", html5:"only", mobilescale:1.0, passQueryParameters:"startscene,startlookat"});
-	</script>
-</div>
-
-<div class="call-zalo" datasqstyle="{&quot;bottom&quot;:null}" datasquuid="f8c6b614-fd88-4756-88f5-b1346bcf9d9b" datasqbottom="260" style="bottom: 125px;">
-	<div class="hotline-zalo-ring-circle"></div>
-	<div class="hotline-zalo-ring-circle-fill"></div>
-	<a data-animate="fadeInDown" rel="nofollow" href="https://zalo.me/0938500588" target="_blank" data-animated="true">
-	<img src="https://ecoparkproperty.vn/wp-content/uploads/2025/01/icon-zalo-01.png" alt="Chat zalo" width="70" style=""></a>
-</div>
-
-
-<style>
-
-.call-zalo {
-    position: fixed;
-    right: 5px;
-    bottom: 220px;
-    z-index: 9;
-    cursor: pointer;
-}
-
-.hotline-zalo-ring-circle {
-    width: 95px;
-    height: 95px;
-    top: -7px;
-    left: -15px;
-    position: absolute;
-    background-color: transparent;
-    border-radius: 100%;
-    border: 2px solid #008fe6;
-    -webkit-animation: phonering-alo-circle-anim 1.2s infinite ease-in-out;
-    animation: phonering-alo-circle-anim 1.2s infinite ease-in-out;
-    transition: all .5s;
-    -webkit-transform-origin: 50% 50%;
-    -ms-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    opacity: 0.5;
-    z-index: -1;
-}
-
-.call-zalo {
-    position: fixed;
-    right: -5px;
-    bottom: 220px;
-    z-index: 9;
-    cursor: pointer;
-}
-
-.hotline-zalo-ring-circle-fill {
-    width: 65px;
-    height: 65px;
-    top: 8px;
-    left: 0px;
-    position: absolute;
-    background-color: rgba(0, 143, 230, 0.7);
-    border-radius: 100%;
-    border: 2px solid transparent;
-    -webkit-animation: phonering-alo-circle-fill-anim 2.3s infinite ease-in-out;
-    animation: phonering-alo-circle-fill-anim 2.3s infinite ease-in-out;
-    transition: all .5s;
-    -webkit-transform-origin: 50% 50%;
-    -ms-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    z-index: -1;
-}
-
-@-webkit-keyframes phonering-alo-circle-anim {
-0% {
--webkit-transform: rotate(0) scale(0.5) skew(1deg);
--webkit-opacity: 0.1;
-}
-30% {
--webkit-transform: rotate(0) scale(0.7) skew(1deg);
--webkit-opacity: 0.5;
-}
-100% {
--webkit-transform: rotate(0) scale(1) skew(1deg);
--webkit-opacity: 0.1;
-}
-}
-
-@-webkit-keyframes phonering-alo-circle-fill-anim {
-0% {
--webkit-transform: rotate(0) scale(0.7) skew(1deg);
-opacity: 0.6;
-}
-50% {
--webkit-transform: rotate(0) scale(1) skew(1deg);
-opacity: 0.6;
-}
-100% {
--webkit-transform: rotate(0) scale(0.7) skew(1deg);
-opacity: 0.6;
-}
-}
-
-</style>
-
-
-<div class="hotline-phone-ring-wrap" datasqstyle="{&quot;bottom&quot;:null}" datasquuid="f8c6b614-fd88-4756-88f5-b1346bcf9d9b" datasqbottom="140" style="bottom: 25px;">
-    <div class="hotline-phone-ring">
-     <div class="hotline-phone-ring-circle"></div>
-     <div class="hotline-phone-ring-circle-fill"></div>
-     <div class="hotline-phone-ring-img-circle">
-     <a rel="nofollow" href="tel:0939777399" onclick="return gtag_report_conversion('tel:0938500588');" class="pps-btn-img">
-      <img src="https://ecoparkproperty.vn/wp-content/uploads/2024/09/phone.png" alt="Gọi điện thoại" width="50">
-     </a>
-     </div>
+  <main id="pano" aria-label="Sa bàn 360 độ dự án Genera">
+    <noscript>Bạn cần bật JavaScript để xem sa bàn 360°.</noscript>
+  </main>
+  <header class="top-app-bar" aria-label="Thông tin dự án">
+    <div class="brand-mark" aria-hidden="true">G360</div>
+    <div class="brand-copy">
+      <p class="brand-kicker">Genera by The Solia</p>
+      <h1 class="brand-title">Khám phá dự án 360°</h1>
     </div>
-   </div>
-
-<style>
-
-.hotline-phone-ring-wrap {
-    position: fixed;
-    bottom: 100px;
-    right: -26px;
-    z-index: 9;
-}
-
-.hotline-phone-ring {
-    position: relative;
-    visibility: visible;
-    background-color: transparent;
-    width: 110px;
-    height: 110px;
-    cursor: pointer;
-    z-index: 11;
-    -webkit-backface-visibility: hidden;
-    -webkit-transform: translateZ(0);
-    transition: visibility .5s;
-    left: 0;
-    bottom: 0;
-    display: block;
-}
-
-.hotline-phone-ring-circle {
-    width: 85px;
-    height: 85px;
-    top: -15px;
-    left: 10px;
-    position: absolute;
-    background-color: transparent;
-    border-radius: 100%;
-    border: 2px solid #e60808;
-    -webkit-animation: phonering-alo-circle-anim 1.2s infinite ease-in-out;
-    animation: phonering-alo-circle-anim 1.2s infinite ease-in-out;
-    transition: all .5s;
-    -webkit-transform-origin: 50% 50%;
-    -ms-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    opacity: 0.5;
-}
-
-.hotline-phone-ring-circle-fill {
-    width: 55px;
-    height: 55px;
-    top: 1px;
-    left: 26px;
-    position: absolute;
-    background-color: rgba(230, 8, 8, 0.7);
-    border-radius: 100%;
-    border: 2px solid transparent;
-    -webkit-animation: phonering-alo-circle-fill-anim 2.3s infinite ease-in-out;
-    animation: phonering-alo-circle-fill-anim 2.3s infinite ease-in-out;
-    transition: all .5s;
-    -webkit-transform-origin: 50% 50%;
-    -ms-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-}
-
-.hotline-phone-ring-img-circle {
-    background-color: #e60808;
-    width: 33px;
-    height: 33px;
-    top: 12px;
-    left: 36px;
-    position: absolute;
-    background-size: 20px;
-    border-radius: 100%;
-    border: 2px solid transparent;
-    -webkit-animation: phonering-alo-circle-img-anim 1s infinite ease-in-out;
-    animation: phonering-alo-circle-img-anim 1s infinite ease-in-out;
-    -webkit-transform-origin: 50% 50%;
-    -ms-transform-origin: 50% 50%;
-    transform-origin: 50% 50%;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex
-;
-    align-items: center;
-    justify-content: center;
-}
-
-.hotline-phone-ring-img-circle .pps-btn-img {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex
-;
-}
-
-.hotline-phone-ring-img-circle .pps-btn-img img {
-    width: 20px;
-    height: 20px;
-}
-
-</style>
-
+  </header>
+  <nav class="contact-actions" aria-label="Liên hệ tư vấn">
+    <a class="action-button" href="https://zalo.me/0938500588" target="_blank" rel="nofollow noopener" aria-label="Nhắn tin qua Zalo">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.49 2 2 5.8 2 10.48c0 2.64 1.43 5.03 3.82 6.58L4.8 21.12a.7.7 0 0 0 .94.81l4.66-2.08c.52.07 1.05.11 1.6.11 5.51 0 10-3.8 10-8.48S17.51 2 12 2Zm-4.85 11.8H5.1v-1.1l2.08-2.82H5.25V8.5h4.1v1.1l-2.05 2.82h2.14v1.38H7.15Zm6.15 0-.23-.68h-1.82l-.23.68H9.4l2.06-5.3h1.49l2.03 5.3H13.3Zm5.65 0h-3.62V8.5h1.56v3.92h2.06v1.38Zm-7.3-1.9h1.02l-.5-1.56-.52 1.56Z"/></svg>
+    </a>
+    <a class="action-button primary" href="tel:0938500588" aria-label="Gọi 0938 500 588">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.48 15.48 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>
+    </a>
+  </nav>
+  <div class="helper-chip" id="helper" aria-hidden="true">
+    <svg viewBox="0 0 24 24"><path d="M7 2a2 2 0 0 1 2 2v5h1V3a2 2 0 1 1 4 0v6h1V4a2 2 0 1 1 4 0v8.5l1.55-1.55a2 2 0 0 1 2.83 2.83l-5.8 5.8A5 5 0 0 1 14.05 21H10a7 7 0 0 1-7-7V7a2 2 0 1 1 4 0v5h1V4a2 2 0 0 1 2-2Z"/></svg>
+    Chạm và kéo để khám phá
+  </div>
+  <div class="loading-screen" id="loading" role="status" aria-live="polite">
+    <div class="loader"><div class="loader-ring" aria-hidden="true"></div><span>Đang mở không gian 360°</span></div>
+  </div>
+  <script src="tour.js"></script>
+  <script>
+    const loading = document.getElementById('loading');
+    const helper = document.getElementById('helper');
+    embedpano({
+      xml: 'tour.xml', target: 'pano', html5: 'only', mobilescale: 1,
+      passQueryParameters: 'startscene,startlookat',
+      onready() {
+        window.setTimeout(() => loading.classList.add('is-ready'), 250);
+        window.setTimeout(() => helper.classList.add('is-hidden'), 5500);
+      }
+    });
+  </script>
 </body>
 </html>
