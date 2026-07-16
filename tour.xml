@@ -6,7 +6,7 @@
 	<include url="menu/plugins/photo_sm.xml" />
 
 		<!-- Tạo Hotspot -->
-	<include url="add_hotspot/plugins_l/add_hotspot.xml" /> 
+	<!-- Editor hotspot module removed from production for faster startup. -->
 
 		<!-- Bước 1 Thêm điểm leo trên cao -->
 	<include url="plugins/hellowork/jr.xml"/>
@@ -14,7 +14,7 @@
 	<include url="skin/vtourskin.xml" />
 
 	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
-	<skin_settings maps="true"
+	<skin_settings maps="false"
 	               maps_type="google"
 	               maps_bing_api_key=""
 	               maps_google_api_key=""

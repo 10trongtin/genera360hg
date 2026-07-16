@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="vi">
 <head>
   <meta charset="utf-8">
@@ -48,8 +48,8 @@
       display: flex; flex-direction: column; gap: 10px;
     }
     .action-button {
-      display: flex; width: 56px; height: 56px; align-items: center; justify-content: center; border: 1px solid var(--outline);
-      border-radius: 18px; color: var(--on-surface); background: var(--surface-glass); box-shadow: var(--shadow); text-decoration: none;
+      display: flex; min-width: 56px; height: 56px; padding: 0 18px; align-items: center; gap: 10px; justify-content: center; border: 1px solid var(--outline);
+      border-radius: 18px; color: var(--on-surface); background: var(--surface-glass); box-shadow: var(--shadow); text-decoration: none; touch-action: manipulation;
       transition: transform 180ms ease, background-color 180ms ease, color 180ms ease; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
     }
     .action-button.primary { border-color: transparent; color: var(--on-primary); background: var(--primary); }
@@ -57,7 +57,8 @@
     .action-button.primary:hover { background: #e7cc91; }
     .action-button:active { transform: scale(0.96); }
     .action-button:focus-visible { outline: 3px solid rgba(217, 189, 130, 0.45); outline-offset: 3px; }
-    .action-button svg { width: 24px; height: 24px; fill: currentColor; }
+    .action-button svg { flex: 0 0 24px; width: 24px; height: 24px; fill: currentColor; }
+    .action-label { font-size: 14px; font-weight: 700; letter-spacing: 0.01em; white-space: nowrap; }
     .helper-chip {
       position: fixed; z-index: 15; left: 50%; bottom: max(76px, calc(env(safe-area-inset-bottom) + 76px)); display: flex;
       align-items: center; gap: 8px; padding: 10px 16px; border: 1px solid var(--outline); border-radius: var(--radius-pill);
@@ -81,8 +82,16 @@
       .brand-title { font-size: 14px; }
       .brand-kicker { font-size: 10px; }
       .contact-actions { bottom: max(70px, calc(env(safe-area-inset-bottom) + 70px)); }
-      .action-button { width: 52px; height: 52px; border-radius: 17px; }
+      .action-button { width: 52px; min-width: 52px; height: 52px; padding: 0; border-radius: 17px; }
+      .action-label { display: none; }
+      .top-app-bar, .action-button, .helper-chip { background: rgba(23, 24, 20, 0.96); backdrop-filter: none; -webkit-backdrop-filter: none; }
       .helper-chip { bottom: max(72px, calc(env(safe-area-inset-bottom) + 72px)); font-size: 12px; }
+    }
+    @media (max-height: 520px) and (orientation: landscape) {
+      .top-app-bar { min-height: 48px; padding: 6px 12px 6px 6px; }
+      .brand-mark { width: 36px; height: 36px; flex-basis: 36px; border-radius: 12px; }
+      .brand-kicker, .helper-chip { display: none; }
+      .contact-actions { bottom: max(64px, calc(env(safe-area-inset-bottom) + 64px)); }
     }
     @media (prefers-reduced-motion: reduce) {
       *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -101,11 +110,9 @@
     </div>
   </header>
   <nav class="contact-actions" aria-label="Liên hệ tư vấn">
-    <a class="action-button" href="https://zalo.me/0938500588" target="_blank" rel="nofollow noopener" aria-label="Nhắn tin qua Zalo">
-      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.49 2 2 5.8 2 10.48c0 2.64 1.43 5.03 3.82 6.58L4.8 21.12a.7.7 0 0 0 .94.81l4.66-2.08c.52.07 1.05.11 1.6.11 5.51 0 10-3.8 10-8.48S17.51 2 12 2Zm-4.85 11.8H5.1v-1.1l2.08-2.82H5.25V8.5h4.1v1.1l-2.05 2.82h2.14v1.38H7.15Zm6.15 0-.23-.68h-1.82l-.23.68H9.4l2.06-5.3h1.49l2.03 5.3H13.3Zm5.65 0h-3.62V8.5h1.56v3.92h2.06v1.38Zm-7.3-1.9h1.02l-.5-1.56-.52 1.56Z"/></svg>
-    </a>
     <a class="action-button primary" href="tel:0938500588" aria-label="Gọi 0938 500 588">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.48 15.48 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>
+      <span class="action-label">Gọi tư vấn</span>
     </a>
   </nav>
   <div class="helper-chip" id="helper" aria-hidden="true">
@@ -119,6 +126,7 @@
   <script>
     const loading = document.getElementById('loading');
     const helper = document.getElementById('helper');
+    document.addEventListener('pointerdown', () => helper.classList.add('is-hidden'), { once: true, passive: true });
     embedpano({
       xml: 'tour.xml', target: 'pano', html5: 'only', mobilescale: 1,
       passQueryParameters: 'startscene,startlookat',
