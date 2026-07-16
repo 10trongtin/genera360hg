@@ -14,7 +14,7 @@
 			menu_bgborder="0,1,0,0 0xFFFFFF 0.14"
 			menu_bgroundedge="0 22 22 0"
 			menu_bgshadow="8 0 30 0x000000 0.28"
-			menu_bgalpha="0.94"
+			menu_bgalpha="0.98"
 			menu_align="lefttop"
 			logo_cont_height="150"
 			logo_height="80"

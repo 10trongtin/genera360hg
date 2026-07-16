@@ -1,4 +1,4 @@
-﻿<krpano>
+<krpano>
 	
 	<!-- //////////////////////    СТИЛИ    /////////////////////////////// --> 
 	<!-- Контейнер группы -->
@@ -154,42 +154,42 @@
 	 <!-- /////////////////////////////////////////////     показать/спрятать меню   /////////////////////////////////////////////////////  -->
 
 	<!-- Кнопка  показать/спрятать меню -->
-    <layer  name="butt_m_cont" type="container"  keep="true"  enabled="true" visible="true" alpha="1"  align="get:menu_sm.menu_align" width="37"  height="30" x="10" y="10" 
-		      bgcolor="get:menu_sm.head_bgcolor" bgalpha="0.5" bgcapture="true" zorder="51"  parent="" 
-			bgroundedge="0 0 0 0" bgshadow="2 2 3 0 0x1D1D1D 0.0"  
-			onover="set(bgcolor,get(menu_sm.head_onover_color)); set(bgalpha,0.5);" 
-			onout="set(bgcolor,get:menu_sm.head_bgcolor);  if(open_m, set(bgalpha,0));" 
-			onclick="if(open_m, hide_m();,shou_m();  );"  
+    <layer  name="butt_m_cont" type="container"  keep="true"  enabled="true" visible="true" alpha="1"  align="get:menu_sm.menu_align" width="44" height="44" x="12" y="16"
+		      bgcolor="0x171814" bgalpha="0.92" bgcapture="true" zorder="51" bgborder="1 0xFFFFFF 0.14"  parent=""
+			bgroundedge="14" bgshadow="0 8 24 0x000000 0.24"
+			onover="set(bgcolor,0x23241F); set(bgalpha,1);"
+			onout="set(bgcolor,0x171814); set(bgalpha,0.92);"
+			onclick="if(open_m, hide_m();,shou_m();  );"
 		/>
 	<!--     анимированный крестик кнопки   -->
     <style  name="butt_m"  type="container"  keep="true"  enabled="false" visible="true" alpha="1" align="center" zorder="51" parent="butt_m_cont"
-				width="17"  height="2"  bgcolor="0xFFFFFF"  bgalpha="1"  bgcapture="false"  bgroundedge="2 2 2 2" bgshadow="0 0 1 0x000001 1" />
+				width="16" height="2" bgcolor="0xD9BD82"  bgalpha="1"  bgcapture="false"  bgroundedge="2 2 2 2" bgshadow="0 0 1 0x000001 1" />
 	<!-- палочки кнопки меню -->
-	<layer  name="cross_1" style="butt_m" rotate="0" y="-6" width="17" />	
-	<layer  name="cross_2" style="butt_m" rotate="0"   y="0"  width="17" />	
-	<layer  name="cross_3" style="butt_m" rotate="0"  y="6"  width="17" />		
-	
+	<layer  name="cross_1" style="butt_m" rotate="0" y="-6" width="16" />
+	<layer  name="cross_2" style="butt_m" rotate="0"   y="0"  width="16" />
+	<layer  name="cross_3" style="butt_m" rotate="0"  y="6"  width="16" />
+
 	<!-- спрятать меню  -->
-	<action name="hide_m" > 
-					set(open_m,false);
-					calc(hideVmen, menu_sm.menu_width * -1 - 20); 
-					tween(layer[osnovn_cont_menu].x,get(hideVmen),0.4); <!-- закрыть меню  -->
-					tween(layer[cross_1].rotate|layer[cross_1].y,0|-6,0.6,easeincubic); 
-					tween(layer[cross_2].width,17,0.6,easeincubic); 
-					tween(layer[cross_3].rotate|layer[cross_3].y,0|6,0.6,easeincubic); 
-					tween(layer[butt_m_cont].x|layer[butt_m_cont].y|layer[butt_m_cont].bgalpha,10|10|0.5,0.4); 
+	<action name="hide_m" >
+					set(open_m,false); js(document.body.classList.remove('menu-open'));
+					calc(hideVmen, menu_sm.menu_width * -1 - 20);
+					tween(layer[osnovn_cont_menu].x,get(hideVmen),0.32,easeOutCubic); <!-- закрыть меню  -->
+					tween(layer[cross_1].rotate|layer[cross_1].y,0|-6,0.24,easeOutCubic);
+					tween(layer[cross_2].width,16,0.24,easeOutCubic);
+					tween(layer[cross_3].rotate|layer[cross_3].y,0|6,0.24,easeOutCubic);
+					tween(layer[butt_m_cont].x|layer[butt_m_cont].y|layer[butt_m_cont].bgalpha,12|16|0.92,0.24);
 	</action>
 	<!-- открыть меню  -->
-	<action name="shou_m" > 
-					set(open_m,true);
-					tween(layer[osnovn_cont_menu].x, get(menu_sm.menu_x), 0.4);		<!-- открыть меню  -->
-					tween(layer[cross_1].rotate|layer[cross_1].y,-45|0,0.7,easeinback);
-					tween(layer[cross_3].rotate|layer[cross_3].y,45|0,0.7,easeinback);
-					tween(layer[cross_2].width,2,0.7,easeinback);  
+	<action name="shou_m" >
+					set(open_m,true); js(document.body.classList.add('menu-open'));
+					tween(layer[osnovn_cont_menu].x,get(menu_sm.menu_x),0.32,easeOutCubic);		<!-- открыть меню  -->
+					tween(layer[cross_1].rotate|layer[cross_1].y,-45|0,0.28,easeOutCubic);
+					tween(layer[cross_3].rotate|layer[cross_3].y,45|0,0.28,easeOutCubic);
+					tween(layer[cross_2].width,2,0.28,easeOutCubic);
 					calc(but_hide, menu_sm.menu_width - 39);
-					calc(x_clos,menu_sm.menu_width + menu_sm.menu_x - 37);
-					tween(layer[butt_m_cont].x, get(x_clos),0.4);
-					tween(layer[butt_m_cont].y|layer[butt_m_cont].bgalpha,0|0,0.4); 
+					calc(x_clos,menu_sm.menu_width + menu_sm.menu_x - 56);
+					tween(layer[butt_m_cont].x,get(x_clos),0.32,easeOutCubic);
+					tween(layer[butt_m_cont].y|layer[butt_m_cont].bgalpha,16|0.92,0.24);
 	</action>
 		
 	

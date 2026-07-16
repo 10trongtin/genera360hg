@@ -31,11 +31,13 @@
     button, a { font: inherit; }
     #pano { position: fixed; inset: 0; background: #10110e; }
     .top-app-bar {
-      position: fixed; z-index: 20; top: max(16px, env(safe-area-inset-top)); left: max(16px, env(safe-area-inset-left));
+      position: fixed; z-index: 20; top: max(16px, env(safe-area-inset-top)); left: max(68px, calc(env(safe-area-inset-left) + 68px));
       display: flex; align-items: center; gap: 12px; min-height: 64px; max-width: min(460px, calc(100vw - 96px));
       padding: 10px 18px 10px 10px; border: 1px solid var(--outline); border-radius: var(--radius-lg);
-      background: var(--surface-glass); box-shadow: var(--shadow); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      background: var(--surface-glass); box-shadow: var(--shadow); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); pointer-events: none;
+      transition: opacity 220ms ease, transform 220ms ease;
     }
+    body.menu-open .top-app-bar { opacity: 0; transform: translateY(-8px); }
     .brand-mark {
       display: grid; flex: 0 0 44px; width: 44px; height: 44px; place-items: center; border-radius: 15px;
       color: var(--on-primary); background: var(--primary); font-size: 13px; font-weight: 800; letter-spacing: -0.03em;
@@ -127,6 +129,9 @@
     const loading = document.getElementById('loading');
     const helper = document.getElementById('helper');
     document.addEventListener('pointerdown', () => helper.classList.add('is-hidden'), { once: true, passive: true });
+    const removeZaloLayers = () => document.querySelectorAll('a[href*="zalo.me"], [id*="zalo" i], [class*="zalo" i]').forEach((element) => element.remove());
+    removeZaloLayers();
+    new MutationObserver(removeZaloLayers).observe(document.body, { childList: true, subtree: true });
     embedpano({
       xml: 'tour.xml', target: 'pano', html5: 'only', mobilescale: 1,
       passQueryParameters: 'startscene,startlookat',
